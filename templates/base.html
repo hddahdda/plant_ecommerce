@@ -32,9 +32,23 @@
 
   </head>
   <body>
-      <div class="container-fluid fixed-top">
-        <h1>Plantiq</h1>
-        <ul class="nav justify-content-center">
+      <!-- <div class="container-fluid fixed-top">
+        <- <nav class="navbar">
+          <a class="navbar-brand" href="#">Plantiq</a>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+         <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+         </ul>
+        </nav> -->
+        <!-- <ul class="nav justify-content-center">
             <li class="nav-item">
               <a class="nav-link active" href="#">Active</a>
             </li>
@@ -47,9 +61,47 @@
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
-          </ul>
-      </div>
+          </li>
+      </div> -->
+      
+      <nav class="navbar">
+        <a class="navbar-brand" href="#">Plantiq</a>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+         </ul>
+    </div>
+  </nav>
+    <div class="container-fluid">
+      <ul class="nav justify-content-center">
+       <li class="nav-item">
+         <a class="nav-link active" href="#">Active</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="#">Link</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="#">Link</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+       </li>
+     </div>
 
       <footer></footer>
+
+      {% block page_header %}
+      {% endblock %}
+  
+      {% block content %}
+      {% endblock %}
   </body>
 </html>
