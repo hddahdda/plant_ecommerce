@@ -1,13 +1,10 @@
 html {
     height: 100%;
 }
-
-/* font-family: 'Roboto Mono', monospace; */ 
 body {
-background-color: gainsboro;
+background-color: rgba(103, 176, 140, 0.56);
 font-family: 'Glory', sans-serif;
 margin-top: 0.5rem;
-padding: 0.5rem 0;
 }
 
 .hero {
@@ -18,4 +15,40 @@ padding: 0.5rem 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat, no-repeat;
+}
+
+.navbar-background {
+    background-color: rgba(143, 162, 153, 0.56);
+}
+
+.navbar-brand {
+    color: #fafafa;
+    font-size: 2rem;
+    margin-left: 2rem;
+    font-family: 'Roboto Mono', monospace;
+    text-shadow: 0.2rem 0.2rem rgba(108, 115, 112, 0.56);
+}
+
+.nav-item a {
+    color: #020202;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: font-size 0.3s ease;
+}
+
+.nav-item {
+    transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(238, 240, 239, 0.76);
+    font-size: 1.4rem;
+}
+
+.nav-item a:hover {
+  font-size: 1.3rem;
+}
+
+.search input {
+    width: 10rem;
 }
