@@ -9,14 +9,23 @@ def view_products(request):
 
     products = Product.objects.all()
 
-    # image = Image.objects.all()
-
     context = {
         'products': products,
-        # 'images': image,
     }
 
     return render(request, 'products/products.html', context)
+
+
+def product_detail(request, product_id):
+    """ A view to show individual product details """
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'products/product_detail.html', context)
 
 # def view_image(request, id):
 #     product = get_object_or_404(Product, id=id)

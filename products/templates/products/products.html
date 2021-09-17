@@ -3,51 +3,35 @@
 
 
 {% block content %}
-   <div class="container-fluid">
-       <div class="row justify-content-center">
-           <div class="col-md-auto">
-               <h1>All Products</h1>
-           </div>
-       </div>
-       <div class="row justify-content-center">
-        {% for product in products %}
-           <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <div class="card justify-content-center" style="width: 20rem;">
-                {% if product.product_image %}
-                     <img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.name }}">
-                {% else %}
-                     <img src="{{ MEDIA_URL }}default.jpeg" class="card-img-top" alt="{{ product.name }}">
-                {% endif %}
-            <div class="card-body text-center">
-            <p class="card-text"><strong>{{ product.friendly_name }}</strong></p>
-            <p class="card-text">{{ product.category }}</p>
-            <p class="card-text">Pricing: {{ product.price }} $</p>
-                </div>
-              </div>
-           </div>
+<!---Code copied from Bootstap documentation: "https://getbootstrap.com/docs/4.0/examples/album/"-->
+<div class="album py-5 bg-light">
+    <div class="container">
 
-           <!---For loop from Code institute Boutique Ado project.-->
-           {% if forloop.counter|divisibleby:1 %}
-           <div class="col-12 d-sm-none mb-5">
-               <hr>
-           </div>
-       {% endif %}                        
-       {% if forloop.counter|divisibleby:2 %}
-           <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-               <hr>
-           </div>
-       {% endif %}
-       {% if forloop.counter|divisibleby:3 %}
-           <div class="col-12 d-none d-lg-block d-xl-none mb-5">
-               <hr>
-           </div>
-       {% endif %}
-       {% if forloop.counter|divisibleby:4 %}
-           <div class="col-12 d-none d-xl-block mb-5">
-               <hr>
-           </div>
-       {% endif %}
+      <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            {% if product.product_image %}
+            <img class="card-img-top" src="{{ product.product_image.url }}" alt="Card image cap">
+            {% else %}
+            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+            {% endif %}
+            <div class="card-body">
+                <h4 class="d-flex justify-content-between align-items-center">{{ product.friendly_name }}</h4>
+                <p class="card-text justify-content-between align-items-center">{{ product.category }}</p>
+              <p class="card-text">{{ product.description|slice:"50" }}...</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-secondary" role="button">View Product</a>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
         {% endfor %}
-       </div>
-   </div>
-{% endblock %}
+        </div>
+        {% endblock %}
+
+{% load static %}
