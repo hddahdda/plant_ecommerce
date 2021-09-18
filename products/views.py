@@ -6,7 +6,7 @@ from .models import Product, Image, Category
 # Create your views here.
 
 
-def view_products(request):
+def products_all(request):
     """ A view to show all products """
 
     products = Product.objects.all()
@@ -24,7 +24,7 @@ def view_products(request):
             if not query:
                 messages.error(request, "Please enter a valid search criteria")
                 return redirect(reverse('products'))
-         
+      
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
@@ -64,7 +64,7 @@ def product_detail(request, product_id):
 #     return render(request, 'products/product_detail.html', context)
 
 
-def view_image(request, id):
+def images_all(request, id):
     product = get_object_or_404(Product, id=id)
     images = Image.objects.filter(product=product)
 
