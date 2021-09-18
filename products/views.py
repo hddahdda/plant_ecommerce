@@ -51,19 +51,6 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
-# def all_images(request, product_id):
-
-#     product_image = get_object_or_404(Product, pk=product_id)                   
-#     detailed_images = image_set.all() 
-
-#     context = {
-#         'product_images': product_images,
-#         'detailed_images': detailed_images,
-#     }
-
-#     return render(request, 'products/product_detail.html', context)
-
-
 def images_all(request, id):
     product = get_object_or_404(Product, id=id)
     images = Image.objects.filter(product=product)
