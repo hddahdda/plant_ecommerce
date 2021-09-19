@@ -40,5 +40,6 @@
 ## Features left to implement (Might do)
 * For a user to be able to sign up or logging in by using their social media account
 
+# Credits
 
 

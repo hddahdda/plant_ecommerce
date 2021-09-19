@@ -1,11 +1,61 @@
 {% extends "base.html" %}
 {% load static %}
-{% block extra_title %}| Cart checkout{% endblock %}
 
-{% block page_header %}
+{% block content %}
+<!--Code borrowed from: https://bbbootstrap.com/snippets/bootstrap-ecommerce-shopping-cart-item-summary-44021562-->
 <div class="album py-5 bg-light">
-    <h1>Cart</h1>
-    {{ cart_items }}
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h4><b>Shopping Cart</b></h4>
+                    </div>
+                     <!-- <div class="col align-self-center text-right text-muted">3 items</div>  -->
+                </div>
+            </div>
+            <div class="row border-top border-bottom">
+            {% if cart_items %}
+              {% for item in cart_items %}
+                <div class="row main align-items-center">
+                    <div class="col-2"><img class="img-fluid" src="{{ item.product.product_image.url }}"></div>
+                    <div class="col">
+                        <div class="row text-muted">{{ item.product.category| capfirst }}</div>
+                        <div class="row">{{ item.product.friendly_name }}</div>
+                        <div class="row">Quantity: {{ item.quantity }}</div>
+                    </div>
+                    <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
+                    <div class="col">$ {{ item.product.price }} <span class="close">&#10005;</span></div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="{% url 'products' %}" class="btn btn-outline-secondary btn-lg">Go back</a>
+        </div>
+        <div class="col-md-4 summary">
+            <div>
+                <h5><b>Summary</b></h5>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col text-right">&euro; 132.00</div>
+            </div>             
+            <td colspan="5" class="pt-5 text-right">
+                <h6><strong>Cart Total: ${{ total|floatformat:2 }}</strong></h6>
+                <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+                <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+                    {% if free_delivery_delta > 0 %}
+                    <p class="mb-1 text-danger">
+                        You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong> more!
+                    </p>
+                    {% endif %}
+                    <a href="" class="btn btn-outline-success">Checkout</a>
+            </div> 
+            <div class="row">
+                <div class="col">
+           </div>
+           </div> 
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}
-
