@@ -24,23 +24,31 @@
                         <div class="row">{{ item.product.friendly_name }}</div>
                         <div class="row">Quantity: {{ item.quantity }}</div>
                     </div>
-                    <div class="col"> 
-                        <form action="{% url 'adjust_cart' item.item_id %}" method="POST" class="form">
+                    <div class="col-3"> 
+                        <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
                             {% csrf_token %}
-                        <button class="decrement-qty btn rounded" 
-                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                      -
-                    </button>
-                    <input class="form-control qty_input" type="number" name="quantity"
-                                value="{{ item.quantity }}" min="1" max="20" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                <button class="increment-qty btn rounded"
-                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                +
-                            </button> 
-                        </form>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-sm btn-black rounded-0" 
+                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                            -
+                                        </button>
+                                    </div>
+                                    <input class="form-control form-control-sm qty_input" type="number"
+                                        name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                        data-item_id="{{ item.item_id }}"
+                                        id="id_qty_{{ item.item_id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                            +
+                                        </button>
+                                    </div>
                         <a href="" class="text-info update-link">Update</a>
-                        
+                                </div>
                     </div>
+                    </form>
                     <div class="col">$ {{ item.product.price }} <span class="close"><a href="" class="text-danger remove-item" id="remove_{{ item.item_id }}">X Remove</a></span></div>
                 </div>
                 {% endfor %}
@@ -78,51 +86,8 @@
 <!--Code from Code Institute: Boutiqe Ado project-->
 
 <script type="text/javascript">
-
-    // Disable +/- buttons outside 1-99 range
-    function handleEnableDisable(itemId) {
-        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
-        var minusDisabled = currentValue < 2;
-        var plusDisabled = currentValue > 20;
-        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
-        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
-    }
-
-    // Ensure proper enabling/disabling of all inputs on page load
-    var allQtyInputs = $('.qty_input');
-    for(var i = 0; i < allQtyInputs.length; i++){
-        var itemId = $(allQtyInputs[i]).data('item_id');
-        handleEnableDisable(itemId);
-    }
-
-    // Check enable/disable every time the input is changed
-    $('.qty_input').change(function() {
-        var itemId = $(this).data('item_id');
-        handleEnableDisable(itemId);
-    });
-
-    // Increment quantity
-    $('.increment-qty').click(function(e) {
-       e.preventDefault();
-       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-       var currentValue = parseInt($(closestInput).val());
-       $(closestInput).val(currentValue + 1);
-       var itemId = $(this).data('item_id');
-       handleEnableDisable(itemId);
-    });
-
-    // Decrement quantity
-    $('.decrement-qty').click(function(e) {
-       e.preventDefault();
-       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-       var currentValue = parseInt($(closestInput).val());
-       $(closestInput).val(currentValue - 1);
-       var itemId = $(this).data('item_id');
-       handleEnableDisable(itemId);
-    });
-
-        // Update quantity on click
-        $('.update-link').click(function(e) {
+    // Update quantity on click
+    $('.update-link').click(function(e) {
         var form = $(this).prev('.update-form');
         form.submit();
     })
@@ -131,7 +96,7 @@
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/cart/remove/${itemId}`;
+        var url = `/cart/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
 
         $.post(url, data)
