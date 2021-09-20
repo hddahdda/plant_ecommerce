@@ -45,11 +45,12 @@
                                             +
                                         </button>
                                     </div>
-                        <a href="" class="text-info update-link">Update</a>
+                                </form>
+                        <button type="submit" class="text-info update-link">Update</button>
+                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                 </div>
                     </div>
-                    </form>
-                    <div class="col">$ {{ item.product.price }} <span class="close"><a href="" class="text-danger remove-item" id="remove_{{ item.item_id }}">X Remove</a></span></div>
+                    <div class="col">$ {{ item.product.price }} <span class="close"></span></div>
                 </div>
                 {% endfor %}
             </div>
@@ -84,6 +85,8 @@
 </div>
 
 <!--Code from Code Institute: Boutiqe Ado project-->
+
+{% include 'products/includes/quantity_input_script.html' %}
 
 <script type="text/javascript">
     // Update quantity on click

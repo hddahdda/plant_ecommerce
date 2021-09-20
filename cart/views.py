@@ -28,7 +28,6 @@ def add_to_cart(request, item_id):
 
 
 def adjust_cart(request, item_id):
-
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get("cart", {})
@@ -40,3 +39,16 @@ def adjust_cart(request, item_id):
  
     request.session['cart'] = cart
     return redirect(reverse('cart'))
+
+
+def remove_item(request, item_id):
+
+    cart = request.session.get("cart", {})
+    try:
+        cart.pop(item_id)
+        request.session['cart'] = cart
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
+
