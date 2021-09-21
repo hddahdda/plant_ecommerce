@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'checkout',
     
     # Other apps
-    'crispy-forms',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +62,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'plant_ecommerce.urls'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
