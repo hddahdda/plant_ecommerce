@@ -19,13 +19,17 @@ class Order(models.Model):
     town_or_city = models.CharField(max_length=40, null=False, blank=False)
     street_address = models.CharField(max_length=80, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
-    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    delivery_cost = models.DecimalField(max_digits=6,
+                                        decimal_places=2, null=False, default=0)
+    order_total = models.DecimalField(max_digits=10,
+                                      decimal_places=2, null=False,
+                                      default=0)
+    grand_total = models.DecimalField(max_digits=10,
+                                      decimal_places=2, null=False, default=0)
 
     def _generate_order_number(self):
         """
-        Generate a random UUID 
+        Generate a random UUID
         """
         return uuid.uuid4().hex.upper()
 
@@ -41,7 +45,7 @@ class Order(models.Model):
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
-  
+
     def save(self, *args, **kwargs):
         """
         Override the original save method to set order number
