@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
 {% block content %}
 <!--Code borrowed from: https://bbbootstrap.com/snippets/bootstrap-ecommerce-shopping-cart-item-summary-44021562-->
 <div class="album py-5 bg-light">
@@ -39,16 +43,15 @@
                                <input type="checkbox" id="id-save-info" name="save-info" class="form-check-input" checked>
                                {% else %}
                                <label for="id-save-info" class="form-check-label">
-                                   <a href="{% url 'signup' %}">Sign up</a>
-                                   <a href="{% url 'login' %}">Log in</a>
+                                   <!-- sign up /log in -->
                                </label>
                                {% endif %}
                            </div>
                        </fieldset>
-                       <fieldset class="rounded px-3 mb-4">
+                       <fieldset class="rounded px-10 mb-10">
                        <legend class="fieldset-label">Payment</legend>
-                       <div class="mb-5" id="card-element"></div>
-                       <div class="mb-5 text-danger" id="card-errors" role="alert"></div>
+                       <div class="mb-6" id="card-element"></div>
+                       <div class="mb-6 text-danger" id="card-errors" role="alert"></div>
                        </fieldset>
                        <div class="text-right mb-4">
                            <button id="submit-button" class="btn btn-outline-success">
@@ -87,4 +90,11 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
