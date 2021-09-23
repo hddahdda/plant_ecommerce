@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block content %}
+<!--Code borrowed from: https://bbbootstrap.com/snippets/bootstrap-ecommerce-shopping-cart-item-summary-44021562-->
+<div class="album py-5 bg-light">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="text-center"><b>Profile</b></h4>
+                        <p class="text-muted text-center">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est nisi aliquam amet commodi veniam dignissimos illo rerum explicabo corporis, fugiat quasi aspernatur nulla reiciendis quae totam magnam accusantium sed vitae.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row border-top border-bottom">
+           <div class="row">
+               <div class="col">
+                <h4 class="text-center">Order Info: 
+                </h4>
+            </div>            
+            </div>
+            </div>
+            <a href="{% url 'products' %}" class="btn btn-outline-secondary btn-lg">View products</a>
+        </div>
+        <div class="col-md-4 summary">
+            <div>
+                <h5><b>Contact us</b></h5>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col text-right">Email: email@email.email.com</div>
+                <div class="col text-right">Phone number: 123 456 7891 </div>
+            </div>             
+            <td colspan="5" class="pt-5 text-right">
+                <a href="{% url 'products' %}" class="btn btn-outline-secondary">Keep shopping!</a>
+            </div> 
+        </div>
+    </div>
+</div>
+
+{% endblock %}
