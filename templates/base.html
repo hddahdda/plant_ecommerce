@@ -71,7 +71,16 @@
   </p>
   </button>
   <ul class="dropdown-menu">
-    <!-- Dropdown menu links -->
+    {% if request.user.is_authenticated %}
+       {% if request.user.is_superuser %}
+          <li><a class="dropdown-item" href="#">Product Management</a></li>
+       {% endif %}
+       <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+       <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>
+    {% else %}
+       <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
+       <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+    {% endif %}
   </ul>
 </div>
 </div>
