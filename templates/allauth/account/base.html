@@ -1,1 +1,12 @@
 {% extends "base.html" %}
+
+{% block content %}
+ <div class="album py-5 bg-light">
+     <div class="row justify-content-md-center">
+     <div class="col-6">
+        {% block inner_content %}
+        {% endblock %}
+     </div>
+    </div>
+ </div>
+{% endblock %}
