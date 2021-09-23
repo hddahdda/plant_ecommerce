@@ -50,7 +50,7 @@ class StripeWH_Handler:
                     country__iexact=shipping_details.address.country,
                     postcode__iexact=shipping_details.address.postal_code,
                     town_or_city__iexact=shipping_details.address.city,
-                    street_address__iexact=shipping_details.address.street_address,
+                    street_address__iexact=shipping_details.address.line1,
                     grand_total=grand_total,
                     original_cart=cart,
                     stripe_pid=pid,
@@ -74,7 +74,7 @@ class StripeWH_Handler:
                     country=shipping_details.address.country,
                     postcode=shipping_details.address.postal_code,
                     town_or_city=shipping_details.address.city,
-                    street_address=shipping_details.address.street_address,
+                    street_address=shipping_details.address.line1,
                     original_cart=cart,
                     stripe_pid=pid,
                 )
