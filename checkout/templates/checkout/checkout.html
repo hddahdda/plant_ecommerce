@@ -50,8 +50,11 @@
                        </fieldset>
                        <fieldset class="rounded px-10 mb-3">
                        <legend class="fieldset-label">Payment</legend>
+                       <!--Card element-->
                        <div class="mb-6" id="card-element"></div>
+                       <!--Form errors-->
                        <div class="mb-6 text-danger" id="card-errors" role="alert"></div>
+                       <input type="hidden" value="{{ client_secret }}" name="client_secret">
                        </fieldset>
                        <div class="text-right mb-4">
                            <button id="submit-button" class="btn btn-outline-success">
