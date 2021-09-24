@@ -12,7 +12,7 @@
             <div class="title">
                 <div class="row">
                     <div class="col">
-                        <h4 class="text-center"><b>{{ profile }}</b></h4>
+                        <h4 class="text-center"><b>Profile</b></h4>
                         <p class="text-muted text-center">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est nisi aliquam amet commodi veniam dignissimos illo rerum explicabo corporis, fugiat quasi aspernatur nulla reiciendis quae totam magnam accusantium sed vitae.
                         </p>
@@ -22,9 +22,23 @@
             <div class="row border-top border-bottom">
            <div class="row">
                <div class="col">
-                <h4 class="text-center">
+                <h4 class="text-center">Delivery Information
                 </h4>
-            </div>            
+                <form action="{% url 'profile' %}" class="mt-4" method="POST"
+                 id="profile-update-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-outline-success">
+                        Update Delivery Information</button>
+                        <p class="text-muted">{{ messages.success }}</p>
+                </form>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h4 class="text-center">
+                    Order History
+                </h4>
+                {{ orders }}
+            </div>           
             </div>
             </div>
             <a href="{% url 'products' %}" class="btn btn-outline-secondary btn-lg">View products</a>
