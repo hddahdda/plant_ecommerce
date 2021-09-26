@@ -1,0 +1,1 @@
+[{"model": "products.category", "pk": 1, "fields": {"name": "houseplant", "friendly_name": "Houseplant"}}, {"model": "products.category", "pk": 2, "fields": {"name": "pottery", "friendly_name": "Pottery"}}, {"model": "products.category", "pk": 3, "fields": {"name": "outdoor_plants", "friendly_name": "Outdoor plants"}}]

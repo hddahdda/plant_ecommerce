@@ -118,15 +118,20 @@ WSGI_APPLICATION = 'plant_ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#DATABASES = {
+#     'default': dj_database_url.parse('postgres://etqvyxxcjxdrlo:42e340070789501aa564d29785f09edb056dfd1f8224d3c871cddc1fbacd6fe3@ec2-79-125-30-28.eu-west-1.compute.amazonaws.com:5432/de4kg0uhh89rl2')
+#    }
+
 if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+      DATABASES = {
+       'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
@@ -174,6 +179,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 30 Dec 2099 20:00:00 CET',
+        'CacheControl': 'max-age=94600000',
+    }
+
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'plantiq'
     AWS_S3_REGION_NAME = 'eu-north-1'
