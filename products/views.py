@@ -42,11 +42,9 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    # images = Image.objects.filter(product_id)
 
     context = {
         'product': product,
-        # 'images': images,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -67,10 +65,45 @@ def add_product(request):
     """ 
     Add a new product to the store (superuser)
     """
-    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added new product!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'Failed to add new product, recheck your form.')
+    else:
+        form = ProductForm()
+
     template = 'products/add_product.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_product(request, product_id):
+    """
+    Edit an existing product 
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        images = Image.objects.filter(product=product)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update product.')
+    else:
+        form = ProductForm(instance=product)
+        
+    template = 'products/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
     }
 
     return render(request, template, context)
