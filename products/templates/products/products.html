@@ -12,7 +12,7 @@
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             {% if product.product_image %}
-            <img class="card-img-top" src="{{ product.product_image.url }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ product.product_image.url }}" alt="Card image cap" max-width="400" height="400">
             {% else %}
             <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
             {% endif %}
@@ -23,9 +23,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-secondary" role="button">View Product</a>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <small class="text-muted">9 mins</small>
+                <div class="row mt-3">
+                <small class="text-muted">
+                  {% if request.user.is_superuser %}
+                  <a href="{% url 'edit_product' product.id %}">Edit</a>
+                  <a href="{% url 'delete_product' product.id %}" class="text-danger">Delete</a>
+                </small>
+              </div>
+                {% endif %}
               </div>
             </div>
           </div>
