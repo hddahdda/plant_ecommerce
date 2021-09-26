@@ -1,1 +1,1 @@
-web: gunicorn plantiq.wsgi:application
+web: gunicorn plant_ecommerce.wsgi:application
