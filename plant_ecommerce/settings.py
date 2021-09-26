@@ -118,9 +118,6 @@ WSGI_APPLICATION = 'plant_ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
-#     'default': dj_database_url.parse('postgres://etqvyxxcjxdrlo:42e340070789501aa564d29785f09edb056dfd1f8224d3c871cddc1fbacd6fe3@ec2-79-125-30-28.eu-west-1.compute.amazonaws.com:5432/de4kg0uhh89rl2')
-#    }
 
 if 'DATABASE_URL' in os.environ:
       DATABASES = {
