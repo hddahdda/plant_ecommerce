@@ -45,11 +45,10 @@
 </head>
 
 <body>
-  <div class="navbar-background">
+  <div class="navbar-background navbar-expand-lg">
     <nav class="navbar">
       <a class="navbar-brand" href="{% url 'home' %}">Plantiq</a>
       <form method="GET" action="{% url 'products' %}" class="form-inline my-0 my-lg-2 search">
-        <div class="row">
           <div class="col">
             <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
           </div>
@@ -72,6 +71,10 @@
   </p>
   </button>
   <ul class="dropdown-menu">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     {% if request.user.is_authenticated %}
        {% if request.user.is_superuser %}
           <li><a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a></li>
@@ -82,6 +85,7 @@
        <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
        <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
     {% endif %}
+    </div>
   </ul>
 </div>
 </div>
