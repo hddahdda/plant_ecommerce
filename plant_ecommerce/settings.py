@@ -26,6 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
+
 ALLOWED_HOSTS = ['plantiq.herokuapp.com', 'localhost']
 
 
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'profiles',
+    'review',
 
     # Other apps
     'crispy_forms',
