@@ -65,7 +65,8 @@
                 </div>
                        </form>
                      <div class="row">
-                            <h3>Customer Reviews</h3>
+                            <h3 class="text-black">Review this!</h3>
+                        {% if user.is_authenticated %}
                         <div class="col-6 md-6 sm-12">
                             <form action="{% url 'add_review' product.id %}" method="POST">
                                 {% csrf_token %}
@@ -80,7 +81,22 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                        {% else %}
+                            <div class="col-6">
+                                <h5 class="text-black">Log in to add a review!</h5>
+                                <a class="btn" href="{% url 'account_login' %}">Log In</a>
+                                <a class="btn" href="{% url 'account_signup' %}">Register</a>
+                            </div>
+                            {% endif %}                       
+                        <div class="col-6">
+                         <h3 class="text-black">Product Reviews</h3>
+                        {% for review in product.review.all %}
+                          <div class="col-6 col-lg-12">
+                              <p>{{review.review}}</p>
+                          </div>
+                        {% endfor %}
+                        </div>
+                       </div>
                         </div>
                         
                     </div>
