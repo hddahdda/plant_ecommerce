@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
+
 
 
 ALLOWED_HOSTS = ['plantiq.herokuapp.com', 'localhost']
@@ -109,7 +109,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Code from the Boutiqe Ado project used for user authentication using Allauth
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION =  False
+ACCOUNT_EMAIL_VERIFICATION = False
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
@@ -123,8 +123,8 @@ WSGI_APPLICATION = 'plant_ecommerce.wsgi.application'
 
 
 if 'DATABASE_URL' in os.environ:
-      DATABASES = {
-       'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
