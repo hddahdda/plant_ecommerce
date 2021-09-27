@@ -5,26 +5,28 @@
 {% block content %}
 <!---Code copied from Bootstap documentation: "https://getbootstrap.com/docs/4.0/examples/album/"-->
 <div class="album py-5 bg-light">
-    <div class="container">
+  <div class="container">
 
-      <div class="row">
-        {% for product in products %}
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            {% if product.product_image %}
-            <img class="card-img-top" src="{{ product.product_image.url }}" alt="Card image cap" width="400" height="400">
-            {% else %}
-            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
-            {% endif %}
-            <div class="card-body">
-                <h4 class="d-flex justify-content-between align-items-center">{{ product.friendly_name }}</h4>
-                <p class="card-text justify-content-between align-items-center">{{ product.category }}</p>
-              <p class="card-text">{{ product.description|slice:"50" }}...</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                    <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-secondary" role="button">View Product</a>
-                </div>
-                <div class="row mt-3">
+    <div class="row">
+      {% for product in products %}
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          {% if product.product_image %}
+          <img class="card-img-top" src="{{ product.product_image.url }}" alt="Card image cap" width="400" height="400">
+          {% else %}
+          <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+            alt="Card image cap">
+          {% endif %}
+          <div class="card-body">
+            <h4 class="d-flex justify-content-between align-items-center">{{ product.friendly_name }}</h4>
+            <p class="card-text justify-content-between align-items-center">{{ product.category }}</p>
+            <p class="card-text">{{ product.description|slice:"50" }}...</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-secondary" role="button">View
+                  Product</a>
+              </div>
+              <div class="row mt-3">
                 <small class="text-muted">
                   {% if request.user.is_superuser %}
                   <a href="{% url 'edit_product' product.id %}">Edit</a>
@@ -32,13 +34,13 @@
                   {% endif %}
                 </small>
               </div>
-              </div>
             </div>
           </div>
         </div>
-        {% endfor %}
-        </div>
       </div>
-        {% endblock %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock %}
 
-{% load static %}
+  {% load static %}

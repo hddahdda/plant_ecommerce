@@ -14,63 +14,63 @@
                     <div class="col">
                         <h4 class="text-center"><b>Profile</b></h4>
                         <p class="text-muted text-center">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est nisi aliquam amet commodi veniam dignissimos illo rerum explicabo corporis, fugiat quasi aspernatur nulla reiciendis quae totam magnam accusantium sed vitae.
+                            This is your profile from which you can access your previous orders and billing information.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="row border-top border-bottom">
-           <div class="row">
-               <div class="col">
-                <h4 class="text-center">Delivery Information
-                </h4>
-                <form action="{% url 'profile' %}" class="mt-4" method="POST"
-                 id="profile-update-form">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <button class="btn btn-outline-success">
-                        Update Delivery Information</button>
-                        <p class="text-muted">{{ messages.success }}</p>
-                </form>
-            </div>
-            <div class="col-12 col-lg-6">
-                <h4 class="text-center">
-                    Order History
-                </h4>
-                <div class="table-responsive">
-                    <table class="table table-sm">
-                        <thead>
-                            <tr>
-                                <th>Order Number</th>
-                                <th>Date</th>
-                                <th>Products</th>
-                                <th>Order Total</th>
-                            </tr>
-                        </thead>
-                        {% for order in orders %}
-                        <tr>
-                            <td>
-                                <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-                                    {{ order.order_number|truncatechars:6 }}
-                                </a>
-                            </td>
-                            <td>{{ order.date }}</td>
-                            <td>
-                                <ul class="list-unstyled">
-                                    {% for item in order.lineitems.all %}
-                                         <li>
-                                             {{ item.product.name }} - {{ item.quantity }}
-                                         </li>
-                                    {% endfor %}
-                                </ul>
-                            </td>
-                            <td>$ {{ order.grand_total }}</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
+                <div class="row">
+                    <div class="col">
+                        <h4 class="text-center">Delivery Information
+                        </h4>
+                        <form action="{% url 'profile' %}" class="mt-4" method="POST" id="profile-update-form">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button class="btn btn-outline-success">
+                                Update Delivery Information</button>
+                            <p class="text-muted">{{ messages.success }}</p>
+                        </form>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h4 class="text-center">
+                            Order History
+                        </h4>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number</th>
+                                        <th>Date</th>
+                                        <th>Products</th>
+                                        <th>Order Total</th>
+                                    </tr>
+                                </thead>
+                                {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'order_history' order.order_number %}"
+                                            title="{{ order.order_number }}">
+                                            {{ order.order_number|truncatechars:6 }}
+                                        </a>
+                                    </td>
+                                    <td>{{ order.date }}</td>
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in order.lineitems.all %}
+                                            <li>
+                                                {{ item.product.name }} - {{ item.quantity }}
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>$ {{ order.grand_total }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
                 </div>
-            </div>           
-            </div>
             </div>
             <a href="{% url 'products' %}" class="btn btn-outline-secondary btn-lg">View products</a>
         </div>
@@ -82,12 +82,12 @@
             <div class="row">
                 <div class="col text-right">Email: email@email.email.com</div>
                 <div class="col text-right">Phone number: 123 456 7891 </div>
-            </div>             
+            </div>
             <td colspan="5" class="pt-5 text-right">
                 <a href="{% url 'products' %}" class="btn btn-outline-secondary">Keep shopping!</a>
-            </div> 
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}
