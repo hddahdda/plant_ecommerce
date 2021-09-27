@@ -9,6 +9,5 @@ class AdminReview(admin.ModelAdmin):
         'user',
         'subject',
         'review',
-        'rating',
         'added',
     )

@@ -57,10 +57,32 @@
                         </div> 
                         </div>
                     </div>
-                        <input type="submit" class="btn btn-secondary btn-sm" value="Add to cart">
+                    <div class="row justify-content-end">
+                        <div class="col-6">
+                        <input type="submit" class="btn btn-outline-success" value="Add to cart">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </div>
                        </form>
+                     <div class="row">
+                            <h3>Customer Reviews</h3>
+                        <div class="col-6 md-6 sm-12">
+                            <form action="{% url 'add_review' product.id %}" method="POST">
+                                {% csrf_token %}
+                                {{ form | crispy }}
+                                <h5>Add your review below.</h5>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="subject" placeholder="Title" required>
+                                    <br>
+                                    <textarea name="review" rows="10" class="form-control" placeholder="Your review" required></textarea>
+                                    <br>  
+                                    <button class="btn btn-success" type="submit">Add your review!</button>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

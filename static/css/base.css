@@ -218,3 +218,41 @@ a:hover {
 }
 
 /**** ENDS HERE */
+
+/** Product Review */
+
+.rating > input{
+    display:none;
+}
+
+.rate > label{
+    float:right;
+}
+
+.rating > label:before{
+    display: inline-block;
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 0.1rem;
+    padding: 0.2rem;
+    font-family: FontAwesome;
+    content: "\f299";
+    color:rgba(103, 176, 140, 0.56);
+}
+
+.rating{
+    color: linear-gradient(90deg, rgba(10,121,9,0.09427521008403361) 0%, rgba(2,0,36,0.0802696078431373) 36%, rgba(8,139,58,0.7693452380952381) 57%, rgba(14,74,48,1) 100%);
+    width: 50%;
+    float: left;
+}
+
+.rating5 {
+    background-color: aqua;
+}
+/* input:checked ~ label, label:hover ~ label {
+    color: #000;
+}
+
+input:checked + label:hover, input:checked ~ label:hover, input:checked ~ label:hover ~ label,
+label:hover ~ input:checked ~ label{
+    color: #fafafa; */

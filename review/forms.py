@@ -8,7 +8,8 @@ class FormReview(forms.ModelForm):
         exclude = (
             'added',
             'product',
-            'user'
+            'user',
+            'rating',
         )
 
-        fields = ['subject', 'rating', 'review']
+        fields = ['subject', 'review']
