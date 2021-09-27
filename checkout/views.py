@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+                              render, redirect,
+                              reverse, get_object_or_404,
+                              HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -12,6 +15,7 @@ from cart.contexts import cart_contexts
 
 import stripe
 import json
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -74,9 +78,10 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('cart'))
-        
+
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form \
                 Check your information')
@@ -95,7 +100,7 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY
         )
-       
+
        # Attempting to prefilling the user form with user data
         if request.user.is_authenticated:
             try:

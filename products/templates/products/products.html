@@ -12,7 +12,7 @@
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             {% if product.product_image %}
-            <img class="card-img-top" src="{{ product.product_image.url }}" alt="Card image cap" max-width="400" height="400">
+            <img class="card-img-top" src="{{ product.product_image.url }}" alt="Card image cap" width="400" height="400">
             {% else %}
             <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
             {% endif %}
@@ -32,13 +32,13 @@
                   {% endif %}
                 </small>
               </div>
-                
               </div>
             </div>
           </div>
         </div>
         {% endfor %}
         </div>
+      </div>
         {% endblock %}
 
 {% load static %}

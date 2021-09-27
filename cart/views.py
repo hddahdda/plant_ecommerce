@@ -3,12 +3,8 @@ from django.shortcuts import (
 
 from products.models import Product
 
-# Create your views here.
-
 
 def cart(request):
-    # request.session.set_expiry() Might use
-    # request.session.session_key 
     return render(request, 'cart/cart.html')
 
 
@@ -21,7 +17,7 @@ def add_to_cart(request, item_id):
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
     else:
-        cart[item_id] = quantity 
+        cart[item_id] = quantity
 
     request.session['cart'] = cart
     return redirect(redirect_url)
@@ -36,7 +32,7 @@ def adjust_cart(request, item_id):
         cart[item_id] = quantity
     else:
         cart.pop(item_id)
- 
+
     request.session['cart'] = cart
     return redirect(reverse('cart'))
 
@@ -51,4 +47,3 @@ def remove_item(request, item_id):
 
     except Exception as e:
         return HttpResponse(status=500)
-

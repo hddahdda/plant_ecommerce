@@ -9,7 +9,6 @@ class FormReview(forms.ModelForm):
             'added',
             'product',
             'user',
-            'rating',
         )
 
         fields = ['subject', 'review']
