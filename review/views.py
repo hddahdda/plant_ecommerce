@@ -9,6 +9,10 @@ from products.models import Product
 
 @login_required
 def add_review(request, product_id):
+    """
+    A view to add a review to the database, using the pruoduct id \
+        to add the correct review to the right product.
+    """
     if request.method == 'POST':
         form = FormReview(request.POST)
         if form.is_valid():

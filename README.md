@@ -8,6 +8,64 @@ Plantiq is educational a fullstack Django ecommerce website where plants and pot
   
 [Live website](https://plantiq.herokuapp.com/)
 
+- [Plant Shop Django Project](#plant-shop-django-project)
+  * [About](#about)
+  * [User Stories](#user-stories)
+    + [Store owner](#store-owner)
+    + [General user (applies for registrered and not registrerd users)](#general-user--applies-for-registrered-and-not-registrerd-users-)
+    + [User who is not registrered](#user-who-is-not-registrered)
+    + [Logged in User](#logged-in-user)
+- [Design choices](#design-choices)
+    + [Colours](#colours)
+    + [Fonts](#fonts)
+    + [Frameworks](#frameworks)
+  * [Wireframes](#wireframes)
+  * [Features](#features)
+  * [Features implemented](#features-implemented)
+      - [Across the website the user has access to the navbar](#across-the-website-the-user-has-access-to-the-navbar)
+      - [Landing page/home](#landing-page-home)
+      - [All products page](#all-products-page)
+      - [Plants page](#plants-page)
+      - [Houseplants](#houseplants)
+      - [Indoor Plants](#indoor-plants)
+      - [Outdoor Plants](#outdoor-plants)
+      - [Pottery](#pottery)
+      - [Product detail page](#product-detail-page)
+      - [Cart](#cart)
+    + [Checkout](#checkout)
+    + [Checkout success](#checkout-success)
+    + [Profile Page](#profile-page)
+    + [Log In/ Sign Up/ Log out](#log-in--sign-up--log-out)
+    + [Product Management](#product-management)
+    + [Edit Product](#edit-product)
+  * [Features left to implement](#features-left-to-implement)
+- [Testing](#testing)
+  * [Testing Reponsivness](#testing-reponsivness)
+    + [Index fix:](#index-fix-)
+    + [Navbar fix:](#navbar-fix-)
+    + [HTML](#html)
+    + [CSS](#css)
+    + [JavaScript](#javascript)
+    + [Python](#python)
+    + [Lighthouse](#lighthouse)
+  * [Testing User Stories](#testing-user-stories)
+    + [Store Owner](#store-owner)
+    + [General user](#general-user)
+    + [User who is not registrered](#user-who-is-not-registrered-1)
+        * [As a user who is not registrered I want the benefits of signing up to be made clear](#as-a-user-who-is-not-registrered-i-want-the-benefits-of-signing-up-to-be-made-clear)
+    + [Logged in User](#logged-in-user-1)
+        * [See my previous order details](#see-my-previous-order-details)
+        * [For my personal details to be saved/prefilled to speed up checkout](#for-my-personal-details-to-be-saved-prefilled-to-speed-up-checkout)
+    + [Manual Testing](#manual-testing)
+    + [Known bugs/errors](#known-bugs-errors)
+  * [Database](#database)
+    + [Apps](#apps)
+- [Deployment](#deployment)
+    + [Heroku:](#heroku-)
+    + [Local Deployment](#local-deployment)
+- [Technologies](#technologies)
+- [Credits](#credits)
+
 ## User Stories
 
 ### Store owner
@@ -256,8 +314,9 @@ This project consists of these apps:
 * Review
 
 Models written by me are:
-Images - Can be found in the Products app, used to display several images in the product detail view.
-Review - Found in the review app, used for adding reviews on products to the database.
+Images - Can be found in the Products app, used to display several images in the product detail view. This contains the foreign key of 
+Product.
+Review - Found in the review app, used for adding reviews on products to the database. This contains two foreign keys, Product and User.
 
 # Deployment
 ### Heroku:
