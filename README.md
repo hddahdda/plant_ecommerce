@@ -1,5 +1,6 @@
 # Plant Shop Django Project
 
+![Screenshot from AmIResponsive website](readmefiles/responsive.png)
   
 
 ## About
@@ -75,7 +76,9 @@ I've implemented Google Fonts for this website, I've used the font 'Glory' with 
 * Bootstrap 5: 
    A framework that gives great access to stylistic choices that would otherwise take some time to write manually in the css file. 
   
- ## Wireframes 
+ ## Wireframes
+   [Wireframes](https://github.com/hddahdda/plant_ecommerce/blob/main/readmefiles/wireframes.png)
+
 
 ## Features
 ## Features implemented
@@ -164,17 +167,25 @@ I've implemented Google Fonts for this website, I've used the font 'Glory' with 
 ### Navbar fix:
 This issue was fixed by implementing the bootstrap navbar toggle. 
 
-## HTML
+### HTML
 I used the [HTML validator](https://validator.w3.org/) for all pages, when using it for the base.html page I ran in to some issues which has yet to be resolved. It seems the validator doesn't want for the navbar to end where it does.
 
-## CSS
-I used the `[CSS validator](https://jigsaw.w3.org/css-validator/)` for my project. No errors.
+FIXED
+This issue was fixed by implementing a new navbar.
+![Screenshot from HTML validator website](readmefiles/htmlvalid.png)
 
-## JavaScript
+### CSS
+I used the `[CSS validator](https://jigsaw.w3.org/css-validator/)` for my project. No errors.
+![Screenshot from HTML validator website](readmefiles/cssvalid.png)
+
+### JavaScript
 I used [JSHint](https://jshint.com/) which is a JavaScript validator tool to validate my js, no errors. 
 
-## Python
+### Python
 I've used the python extension Pylint to format and remow whitespaces from my code.
+
+### Lighthouse
+![Screenshot from Google devtools - Lighthouse](readmefiles/lighthouse.png)
 
 ## Testing User Stories
 ### Store Owner
@@ -212,6 +223,20 @@ The user who is not registred is prompted to do so they can view their previous 
 The user is able to view their previous checkout details in their profile.
 ##### For my personal details to be saved/prefilled to speed up checkout
 If the user has chosen such, this feature is implemented.
+
+### Manual Testing
+| Test Description| Expected Outcome | Result   |
+| :---        |    :----:   |          ---: |
+| Navbar      | When links in navbar are clicked they should lead to correct page. The navbar should be accessible on all devices.      | The links are all working, however the issue with the navbar remained. FIXED |
+Search|    The user should be able to search within the database| The user is able to search for products
+| Signing Up     |  The user should be able to Sign up for the website    | The user is able sign up successfully |
+| Logging in  | The user should be able to log in to the database    | User is able to log in    |
+| Viewing order details and saved information   | The user should be able to view their profile page and information     | Does work  |
+| Adding products to the database  | Admin should be able to add products to the database through the front-end     | Does work      |
+| Delete and Update      | The admin should be able delete and edit existing products     | Works. |
+| Payment  | The user should be able to make a Stripe purchase   | Does work, webhooks are working.
+| Add review to database  | A user should be able to add a review to the database    | Working
+| 
 
 ### Known bugs/errors
 Apart from the HTML validation error the user is not able to view the reviews written by other users nor themselves. This is stored in the database but not displayed for the users.
@@ -260,6 +285,11 @@ Review - Found in the review app, used for adding reviews on products to the dat
     'default': dj_database_url.parse('postgres:///')
     
     }
+  
+  * If wanted, you can load the json filed to populate your Postgres database in Heroku. This is done by typing: python `manage.py loaddata <JSON filename>`, for the database to be correct, do this in the following order:
+     * Categories
+     * Products
+     * Images
   
   * Migrate your changes
   * Type python3 `manage.py createsuperuser` to create a user who will have access to your admin panel when deployed.
@@ -313,5 +343,3 @@ The boutique Ado project was of big help when creating this project and I have b
 * Code for checkout page (HTML + CSS) from [bbbootstrap](https://bbbootstrap.com/snippets/bootstrap-ecommerce-shopping-cart-item-summary-44021562) Which was of great help when creating a clean checkout template.
 * [Unsplash](https://unsplash.com/) was used for all images.
 * Code Institute Tutors for their support  in deployment, bug resolving and a lot of other issues.
-
-
